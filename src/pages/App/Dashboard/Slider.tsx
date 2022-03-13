@@ -25,7 +25,7 @@ const Slider = ({user = [] }): JSX.Element => {
     };
     const filteredData = useMemo(() => {
         return user.filter((user) => user.department === suggestion);
-    }, [suggestion]);
+    }, [user, suggestion]);
 
     return (
         <Box className={classes.commercials}>

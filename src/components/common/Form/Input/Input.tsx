@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { Control, useController } from 'react-hook-form';
 
 import { TextField, TextFieldProps } from '@mui/material';
@@ -30,11 +29,6 @@ const FormInput = ({
         return <></>;
     }
 
-    const fieldPlaceholder = useMemo(
-        () => (placeholder ? placeholder : label ? `Type ${label}` : ''),
-        [placeholder, label]
-    );
-
     return (
         <>
             <TextField
@@ -43,7 +37,7 @@ const FormInput = ({
                 value={value}
                 error={!!error}
                 label={label}
-                placeholder={fieldPlaceholder}
+                placeholder={placeholder}
                 ref={ref}
                 InputProps={{
                     endAdornment: success && <CheckCircleOutlineIcon />,
