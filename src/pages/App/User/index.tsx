@@ -41,12 +41,12 @@ const ManageUser = (): JSX.Element => {
                 reset(user[0]);
             });
         }
-    }, [id, userActions]);
-
+    }, [id, userActions]);  // eslint-disable-line
+ 
     const deleteUser = useCallback(() => {
         userActions.delete(+id);
         history.goBack()
-    }, [history, id])
+    }, [history, id]) // eslint-disable-line
     
     const buttons = useMemo(() => {
         const actions =  [
