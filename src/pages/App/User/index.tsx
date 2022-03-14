@@ -25,7 +25,7 @@ const ManageUser = (): JSX.Element => {
     } = useForm<UserType>({
         resolver: userSchema,
     });   
-// eslint-disable-line for deployment
+    
     const onSubmit = useCallback(
         (user: UserType) => {
             id ? userActions.update(user) : userActions.set(user);
