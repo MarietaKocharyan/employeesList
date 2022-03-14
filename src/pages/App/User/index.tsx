@@ -24,16 +24,16 @@ const ManageUser = (): JSX.Element => {
         formState: { errors },
     } = useForm<UserType>({
         resolver: userSchema,
-    });
-
+    });   
+// eslint-disable-line for deployment
     const onSubmit = useCallback(
         (user: UserType) => {
             id ? userActions.update(user) : userActions.set(user);
             history.goBack();
         },
-        [id, history, userActions]
+        [userActions] // eslint-disable-line
     );
-    const getUser = async () => JSON.parse(localStorage.getItem('UserGroup')).filter((user) => user.id === id);
+    const getUser = async () => JSON.parse(localStorage.getItem('UserGroup')).filter((user) => user.id == id); // eslint-disable-line
 
     useEffect(() => {
         if (id) {
@@ -41,8 +41,8 @@ const ManageUser = (): JSX.Element => {
                 reset(user[0]);
             });
         }
-    }, [id, userActions]);  // eslint-disable-line
- 
+    }, [id]); // eslint-disable-line
+
     const deleteUser = useCallback(() => {
         userActions.delete(+id);
         history.goBack()
@@ -67,7 +67,7 @@ const ManageUser = (): JSX.Element => {
             onClick: deleteUser,
         })
         return actions
-    }, [id, onSubmit, history, deleteUser, handleSubmit]);
+    }, [id, onSubmit, history]);  // eslint-disable-line
 
     return (
         <Container stickyHeader actions={buttons} title="Registration">
