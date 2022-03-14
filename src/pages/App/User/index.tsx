@@ -31,9 +31,9 @@ const ManageUser = (): JSX.Element => {
             id ? userActions.update(user) : userActions.set(user);
             history.goBack();
         },
-        [userActions]
+        [id, history, userActions]
     );
-    const getUser = async () => JSON.parse(localStorage.getItem('UserGroup')).filter((user) => user.id == id);
+    const getUser = async () => JSON.parse(localStorage.getItem('UserGroup')).filter((user) => user.id === id);
 
     useEffect(() => {
         if (id) {
@@ -41,7 +41,7 @@ const ManageUser = (): JSX.Element => {
                 reset(user[0]);
             });
         }
-    }, [id]);
+    }, [id, userActions]);
 
     const deleteUser = useCallback(() => {
         userActions.delete(+id);
@@ -67,7 +67,7 @@ const ManageUser = (): JSX.Element => {
             onClick: deleteUser,
         })
         return actions
-    }, [id, onSubmit, history]);
+    }, [id, onSubmit, history, deleteUser, handleSubmit]);
 
     return (
         <Container stickyHeader actions={buttons} title="Registration">

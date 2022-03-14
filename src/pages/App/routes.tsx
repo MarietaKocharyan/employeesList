@@ -1,8 +1,8 @@
 import { lazy } from 'react';
 
 const NotFound = () => <>NotFound</>;
-
-export default [
+//Eslint disable for deployment
+export default [  // eslint-disable-line
     {
         path: '/',
         component: lazy(() => import('./Dashboard')),

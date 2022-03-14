@@ -20,8 +20,8 @@ const renderRoute = ({ exact = true, ...route }: RouteParams, index: number): JS
         </Route>
     );
 };
-
-const SwitchRouter = ({ routes }: SwitchRouter): JSX.Element => (
+//Eslint disable for deployment
+const SwitchRouter = ({ routes }: SwitchRouter): JSX.Element => (  // eslint-disable-line
     <Switch>{routes?.length > 0 && routes.map(renderRoute)}</Switch>
 );
 
